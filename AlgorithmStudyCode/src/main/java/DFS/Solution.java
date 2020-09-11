@@ -22,7 +22,6 @@ public class Solution {
         //최소성 만족
         while(!candidates.isEmpty()) {
             int n = candidates.remove(0); //최소성을 만족하는 후보키
-            System.out.println(n + " / " +candidates);
             ++answer;
 
             for (Iterator<Integer> it = candidates.iterator(); it.hasNext();){
@@ -40,7 +39,7 @@ public class Solution {
             for (int j = i+1; j < rowsize; ++j){
                 boolean isSame = true;
                 for (int k = 0 ; k < colsize; ++k){
-                    if((subset & 1<<k) == 0){
+                    if((subset & 1<<k ) == 0){
                         continue;
                     }
                     if(relation[i][k].equals(relation[j][k]) == false){
