@@ -4,25 +4,28 @@ import java.util.*;
 
 public class P1260 {
     /*
-4 5 1
+
+5 5 3
+5 4
+5 2
 1 2
-1 3
-1 4
-2 4
 3 4
+3 1
      */
     public static void main(String[] args) {
-        Graph l = new Graph(4);
-        l.addEdge(1, 2);
-        l.addEdge(1, 3);
-        l.addEdge(1, 4);
-        l.addEdge(2, 4);
-        l.addEdge(3, 4);
+//        Graph l = new Graph(5);
+//        l.addEdge(1, 2);
+//        l.addEdge(2, 3);
+//        l.addEdge(1, 5);
+//        l.addEdge(5, 2);
+//        l.addEdge(5, 6);
+//        l.addEdge(4, );
 
-        l.dfs(0);
+//        l.dfs(2);
 //        l.bfs(0);
-    }
+     }
 }
+
 class Graph {
     public Node[] nodes;
 
@@ -42,7 +45,6 @@ class Graph {
         this.nodes = new Node[size];
         for (int i = 0; i < size; i++) {
             nodes[i] = new Node(i+1);
-            System.out.println(i + "번째 노드 : " + nodes[i].data);
         }
     }
 
@@ -66,14 +68,18 @@ class Graph {
 
         while (!stack.isEmpty()) {
             Node r = stack.pop();
-
-            int siz = r.list.size();
-            for (int i=siz-1; i>=0; i--) {
+            for (int i=r.list.size()-1; i>=0; i--) {
                 if(r.list.get(i).check == false){
                     r.list.get(i).check = true;
                     stack.push(r.list.get(i));
                 }
             }
+//            Collections.sort(r.list, new Comparator<Node>() {
+//                @Override
+//                public int compare(Node o1, Node o2) {
+//                    return (o1.data > o2.data) ? +1 : -1;
+//                }
+//            });
             System.out.println(r.data);
         }
     }
